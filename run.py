@@ -2,6 +2,8 @@
 import bottle as bottle
 from bottle import *
 import urlparse # if we're pre-2.6, this will not include parse_qs
+global USER_IN
+USER_IN=""
 try:
             from urlparse import parse_qs
 except ImportError: # old version, grab it from cgi
@@ -14,13 +16,11 @@ def send_static(filename):
 
 #Template
 @route('/')
-def main():
+def post_home():
     return template('index.tpl')
-
 @post("/GID")
 def post_gid():
-    USER_IN = request.query.get("gid") or ""
-    print("x")
+    #queryvars = parse_qs(request.query_string)
     return template('accounts.tpl', USER_IN=USER_IN)
 @get("/GID")
 def get_gid():

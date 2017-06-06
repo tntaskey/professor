@@ -10,9 +10,8 @@
       <h1>Known Accounts</h1>
      </div>
      <div class="btn_input">
-        <form action="/GID" method="post">
-        Professor GID: <input name="USER_IN" id="USER_IN" pattern="[A-Za-z]{1,}" class="text_input" type="text">
-      <input type="submit" id="input" action="/GID">
+      <form method="post" action="/GID">
+        <input type=hidden name=USER_IN id=USER_IN>
       </form>
      </div>
    </div>

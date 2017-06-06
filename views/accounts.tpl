@@ -3,7 +3,7 @@
 <script language="javascript">
 function checkRadio(id){
   //  var radios = document.getElementsByName("haoyue");
-   // for (var i = 0; i < radios.length; i++) {       
+   // for (var i = 0; i < radios.length; i++) {
   //      if (radios[i].checked) {
  //           alert(radios[i].value);
 //            break;
@@ -21,11 +21,11 @@ function checkRadio(id){
    var divbox=document.getElementById(hidestr);
     if (closebutton.checked) {
         divbox.style.display='inline';
-        }  
+        }
     else{
         divbox.style.display='none';
         delbutton.checked = false;
-        }  
+        }
 }
 </script>
 <html>
@@ -41,7 +41,10 @@ function checkRadio(id){
      <form>
        % target_Groups_list = [ line for line in open('Files/Groups') if USER_IN in line]
        % target_Groups_str = ''.join(target_Groups_list)
-       % Group, trash, GID, trash = target_Groups_str.split(":", 3)
+       % Group=target_Groups_str.split(":",3)[0]
+       % GID=target_Groups_str.split(":",3)[2]
+       % print GID
+       % print Group
        <div class="mass">
          % x = 0
          % Name = ""
