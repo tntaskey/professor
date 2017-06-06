@@ -1,4 +1,33 @@
 <!doctype html>
+
+<script language="javascript">
+function checkRadio(id){
+  //  var radios = document.getElementsByName("haoyue");
+   // for (var i = 0; i < radios.length; i++) {       
+  //      if (radios[i].checked) {
+ //           alert(radios[i].value);
+//            break;
+   //     }
+ //   }
+   var delstr=id.concat("del");
+   var renewstr=id.concat("renew");
+   var closestr=id.concat("close");
+   var unkstr=id.concat("unk");
+   var hidestr=id.concat("hide");
+   var renewbutton=document.getElementById(renewstr);
+   var delbutton=document.getElementById(delstr);
+   var closebutton=document.getElementById(closestr);
+   var unkbutton=document.getElementById(unkstr);
+   var divbox=document.getElementById(hidestr);
+    if (closebutton.checked) {
+        divbox.style.display='inline';
+        }  
+    else{
+        divbox.style.display='none';
+        delbutton.checked = false;
+        }  
+}
+</script>
 <html>
  <head>
   <link rel="stylesheet" type="text/css" href="/css/css.css"/>
@@ -25,15 +54,18 @@
            <h2>Accounts Attached to GID</h2>
            % x = 0
            % for i in User_list:
-           % radioname = "User" + str(x)
+          <!-- % radioname = "User" + str(x) -->
+           %user=User_list[x]
            {{User_list[x]}}
-           <input type="radio" name={{radioname}} value="Yes">Known account
-           <input type="radio" name={{radioname}}  value="Unknown">Unknown account
-           <input type="radio" name={{radioname}}  value="No">Not my account
+           %dofunc="checkRadio("+'"' + user + '"' +")"
+           <input type="radio" id={{user}}renew name={{user}}radio value="known" onclick={{dofunc}}>Renew Account
+           <input type="radio" id={{user}}close name={{user}}radio value="close" onclick={{dofunc}} >Close Account
+	   <input type="radio" id={{user}}unk name={{user}}radio value="unknown" onclick={{dofunc}} >Unknown account
+          <span id={{user}}hide style="display: none"><input type="checkbox" id={{user}}del name={{user}}check value="delete">Delete Account</span>
            <br><br>
            % x+=1
            % end
-           <input type="submit">
+           <input type="submit" name=submit>
          </div>
      </form>
    </div>

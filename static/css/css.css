@@ -5,7 +5,7 @@ body
 
 .main
 {
-  position:absolute;
+  position:auto;
   width:65%;
   height: 90%;
   top:2%;
@@ -17,7 +17,7 @@ body
 
 .sub_input
 {
-  position:absolute;
+  position:auto;
   width:95%;
   height:92%;
   top:4%;
@@ -25,6 +25,7 @@ body
   background-color:white;
   border: 2px solid;
   border-color: black;
+  overflow: auto;
 }
 
 .header
@@ -78,4 +79,5 @@ body
   border-top-left-radius:2% 2%;
   border-bottom-left-radius:2% 2%;
   padding: 10px;
+  overflow: auto;
 }
