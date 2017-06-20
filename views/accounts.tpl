@@ -2,22 +2,20 @@
 
 <script language="javascript">
 function checkRadio(id){
-  //  var radios = document.getElementsByName("haoyue");
-   // for (var i = 0; i < radios.length; i++) {
-  //      if (radios[i].checked) {
- //           alert(radios[i].value);
-//            break;
-   //     }
- //   }
+
+//Checks if radio button is clicked, radio buttons are named <user>del,<user>close,<user>unk, and user<renew>
+//<user>hide is a div used to conceal the checkbox, if close account is checked, it is revealed, else it is hidden and unchecked
+
+
    var delstr=id.concat("del");
    var renewstr=id.concat("renew");
    var closestr=id.concat("close");
    var unkstr=id.concat("unk");
    var hidestr=id.concat("hide");
-   var renewbutton=document.getElementById(renewstr);
+//   var renewbutton=document.getElementById(renewstr);
    var delbutton=document.getElementById(delstr);
    var closebutton=document.getElementById(closestr);
-   var unkbutton=document.getElementById(unkstr);
+//   var unkbutton=document.getElementById(unkstr);
    var divbox=document.getElementById(hidestr);
     if (closebutton.checked) {
         divbox.style.display='inline';
@@ -37,34 +35,29 @@ function checkRadio(id){
    <div class="sub_input">
      <div class="header">
       <h1>Known Accounts</h1>
+      <form method="get" action="/GID" >
+        Professor GID: <input name="USER_IN" id="USER_IN" pattern="[A-Za-z]{1,}" class="text_input" type="text">
+        <input type="submit" id="input">
+      </form>
      </div>
-     <form>
-       % target_Groups_list = [ line for line in open('Files/Groups') if USER_IN in line]
-       % target_Groups_str = ''.join(target_Groups_list)
-       % Group=target_Groups_str.split(":",3)[0]
-       % GID=target_Groups_str.split(":",3)[2]
-       % print GID
-       % print Group
+     <form method="get" action="/end">
        <div class="mass">
-         % x = 0
-         % Name = ""
-         % target_Passwd_list = [ line for line in open('Files/Passwd') if GID in line ]
-         % User_list = [i.split(':', 1)[0] for i in target_Passwd_list]
-         % for i in User_list:
-         % x+=1
-         % end
          <div class="users">
-           <h2>Accounts Attached to GID</h2>
-           % x = 0
+           <div class="title">
+             <h2>Accounts Attached to GID</h2>
+           </div>
+           % x=0
            % for i in User_list:
           <!-- % radioname = "User" + str(x) -->
-           %user=User_list[x]
-           {{User_list[x]}}
-           %dofunc="checkRadio("+'"' + user + '"' +")"
-           <input type="radio" id={{user}}renew name={{user}}radio value="known" onclick={{dofunc}}>Renew Account
-           <input type="radio" id={{user}}close name={{user}}radio value="close" onclick={{dofunc}} >Close Account
-	   <input type="radio" id={{user}}unk name={{user}}radio value="unknown" onclick={{dofunc}} >Unknown account
-          <span id={{user}}hide style="display: none"><input type="checkbox" id={{user}}del name={{user}}check value="delete">Delete Account</span>
+             %user=User_list[x]
+             {{User_list[x]}}
+             %dofunc="checkRadio("+'"' + user + '"' +")"
+           <div class"accounts">
+              <input type="radio" id={{user}}renew name={{user}}radio value="known" onclick={{dofunc}}>Renew Account
+              <input type="radio" id={{user}}close name={{user}}radio value="close" onclick={{dofunc}} >Close Account
+	            <input type="radio" id={{user}}unk name={{user}}radio value="unknown" onclick={{dofunc}} checked>Unknown account
+              <span id={{user}}hide style="display: none"><input type="checkbox" id={{user}}del name={{user}}check value="delete">Delete Account</span>
+           </div>
            <br><br>
            % x+=1
            % end
